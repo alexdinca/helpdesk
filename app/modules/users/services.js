@@ -5,7 +5,7 @@ angular.module('Users')
     .factory('UsersFactory',
 
         function ($http, $rootScope, hdFactory) {
-            var extended = angular.extend(hdFactory, {});            
+            var extended = new hdFactory();            
             extended.url = $rootScope.mainUrl;
             extended.items = 'users';
 
