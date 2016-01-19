@@ -1,0 +1,9 @@
+<div class="list-group">
+    <a 
+    ng-class="setActiveItem(item)" 
+    class="list-group-item" 
+    ng-repeat="item in sideMenuItems" 
+    href="{{item.url}}">
+        {{item.name}}
+    </a>    
+</div>

@@ -1,0 +1,58 @@
+﻿<div class="container">
+	<div class="row">
+		<div class="col-sm-8">			
+			<blockquote>
+				<h3>{{ user.group.sec }} | {{ user.group.name }} - {{ user.group.office }}</h3>
+				<p>{{user.name}}</p>
+				<footer> {{ user.type }} </footer>
+			</blockquote>
+			<a href="#/profile/theme">
+				<div class="btn btn-default btn-lg">Change Theme</div>
+			</a>
+		</div>
+		<div class="col-sm-4">
+			<form name="form" class="form well" ng-submit="changePassword()" role="form" >
+				<!-- <div class="text-center"> -->
+				<p class="text-center">Ultima schimbare a parolei: <br/>{{ user.datePass }}</p>
+				<!-- </div> -->
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="form-group">
+					        <label for="oldpass">Old password</label>
+					        <input type="password" name="oldpass" id="oldpass" class="form-control" ng-model="oldpass" required />
+					        <span ng-show="form.oldpass.$dirty && form.oldpass.$error.required" class="text-danger">Old password is required</span>
+					        <span ng-show="form.oldpass.$dirty && checkOldPass()" class="text-danger">Old password is wrong</span>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="form-group">
+					        <label for="password">New password</label>
+					        <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+					        <span ng-show="form.password.$dirty && form.password.$error.required" class="text-danger">New password is required</span>
+					    </div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+					    <div class="form-group">
+					        <label for="rpassword">Retype password</label>
+					        <input type="password" name="rpassword" id="rpassword" class="form-control" ng-model="rpassword" required />
+					        <span ng-show="form.rpassword.$dirty && form.rpassword.$error.required" class="text-danger">Password is required</span>
+					        <span ng-show="form.password.$dirty && form.rpassword.$dirty && checkPasswords()" class="text-danger">Passwords don't match</span>
+					    </div>
+					</div>
+				</div>
+			    <div class="row">
+			    	<div class="col-md-12">
+			    		<div class="form-group">
+					        <button type="submit" ng-disabled="form.$invalid || dataLoading || checkPasswords()" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Change password</button>			        
+					        <div ng-click="resetForm()" class="btn btn-default pull-right"><span class="glyphicon glyphicon-refresh"></span> Reset</div>
+					    </div>
+					</div>
+			    </div>
+			</form>
+		</div>
+	</div>
+</div>

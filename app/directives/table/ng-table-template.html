@@ -1,0 +1,57 @@
+<div class="pull-right" style="max-width:300px;">
+	<input type="text" ng-model="searchTable" class="form-control" placeholder="Filter results shown">
+</div>
+	
+
+<table class="table table-hover table-striped table-condensed">
+	<thead>
+	    <tr>
+	      <th ng-if="nrcrt">No.</th>
+	      <th ng-click="orderBy(td)" ng-repeat="td in tds" style="cursor:pointer;text-transform: capitalize;">
+	      	{{ td.name || lowercase }}
+	      	<span ng-if="order == 'ASC' && sort == td.attribute" class="glyphicon glyphicon-chevron-up"></span>
+	      	<span ng-if="order == 'DESC' && sort == td.attribute" class="glyphicon glyphicon-chevron-down"></span>
+	      </th>
+	      <th ng-if="actions"></th>
+	    </tr>
+	</thead>
+	<tbody>
+	    <tr ng-repeat="item in items | filter:searchTable as results track by $index" class="">
+	      <td ng-if="nrcrt">{{ currentPage * limitsize + $index + 1 }}</td>	      
+	      <td ng-repeat="td in tds">{{ item[td.attribute] }}</td>
+	      <td ng-if="actions">
+	      	<div ng-repeat="a in actions" class="btn btn-{{ a.class }} table-actions" ng-click="a.action(item)"><span class="glyphicon glyphicon-{{ a.icon }}"></span> {{ a.name }}</div>
+	      </td>
+	    </tr>
+	    <tr ng-if="results.length == 0">
+	      <td colspan="{{tds.length}}"><strong>No results found...</strong><td/>
+	    </tr>
+  	</tbody>
+	<tfoot ng-if="searchTable.length == 0">
+		<td colspan="{{tds.length + 2}}">
+		  <div class="pull-left">
+		    <ul class="pagination">
+		      <li ng-if="currentPage != 0" 		          
+		          ng-click="prevPage()">
+		          <a href>&laquo;</a>
+		      </li>
+		      <li ng-repeat="n in pArray track by $index" 
+		          ng-click="gotoPage($index)"
+		          ng-class="{active: $index == currentPage}">
+		          <a href>{{ $index + 1 }}</a>
+		      </li>
+		      <li ng-click="nextPage()" ng-if="currentPage != pages - 1"><a href>&raquo;</a></li>
+		    </ul>      
+		  </div>
+		  <div class="pull-right">
+		  	<ul class="pagination">
+		  		<li 
+		  		ng-repeat="limit in limits"
+		  		ng-click="setLimit(limit)"
+		  		ng-class="{active: limitsize == limit}"><a href>{{ limit }}</a></li>		  		
+		  	</ul>
+		  </div>
+		</td>
+	</tfoot>
+</table>
+

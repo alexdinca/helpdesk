@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="helpDesk" ng-controller="MainController">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>HelpDesk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <base href="http://easyorder.go.ro/helpdesk">
+
+
+    <link href='http://easyorder.go.ro/helpdesk/css/loading-bar.css' rel='stylesheet' />
+    <link ng-href="http://easyorder.go.ro/helpdesk/{{ $root.styleSheet }}" rel="stylesheet" />
+    
+
+    <link href="http://easyorder.go.ro/helpdesk/css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+        <div ng-include src="'http://easyorder.go.ro/helpdesk/app/partials/menu.html'" ng-if="$root.globals.currentUser"></div>
+        <div class="container">
+            <div class="alert text-center alert-dismissable" ng-class="'alert-'+message.class" ng-if="message">
+                <button type="button" ng-click="hideMessage()" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <div ng-bind-html="message.text"></div>
+            </div>
+        </div>
+    </header>
+
+    <main ng-view=""></main>
+
+
+    <!-- vendor references -->
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/angular.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/angular-route.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/angular-animate.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/angular-cookies.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/angular-sanitize.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/js/loading-bar.min.js"></script>
+    <!-- HelpDesk App -->
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/app.js"></script>
+    <!-- Directives -->
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/directives/table/hdTable.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/directives/table/hdFactory.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/directives/currentTime/time.js"></script>
+    <!-- Main Controllers -->
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/controllers/MainController.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/controllers/MenuController.js"></script>
+    
+    <!-- Modules -->
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/authentication/services.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/authentication/controllers.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/profile/services.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/profile/controllers.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/users/services.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/users/controllers.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/tickets/services.js"></script>
+    <script type="text/javascript" src="http://easyorder.go.ro/helpdesk/app/modules/tickets/controllers.js"></script>
+
+  </body>
+</html>

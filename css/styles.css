@@ -1,0 +1,25 @@
+body {
+  padding-top:70px;
+  padding-bottom: 50px;
+}
+
+
+.table-actions{
+  margin-left: 5px;
+}
+
+#loading-bar .bar {
+	height: 5px;
+}
+
+#loading-bar-spinner {
+	top: 15px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 25px;
+  height: 25px;
+  border: solid 4px transparent;
+  border-top-color:  #29d;
+  border-left-color: #29d;
+}

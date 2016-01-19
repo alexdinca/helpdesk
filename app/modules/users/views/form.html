@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <div ng-include="'app/partials/sideMenu.html'"></div>
+        </div>
+
+        <div class="col-sm-9 col-md-10">        	
+            <form class="form-horizontal well" name="userForm" role="form" ng-submit="submitUser()">
+                <div class="form-group" ng-class="{
+                    'has-error': userForm.Account.$invalid && userForm.Account.$dirty, 
+                    'has-success': userForm.Account.$valid && userForm.Account.$dirty, 
+                    'has-feedback': userForm.Account.$dirty}">
+                    <label class="col-sm-2 control-label" for="Account">Account</label>
+                    <div class="col-sm-3">
+                        <input type="text" placeholder="APP_TEST" ng-model="user.Account" name="Account" required class="form-control">
+                        <span ng-show="userForm.Account.$invalid && userForm.Account.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                        <span ng-show="userForm.Account.$valid && userForm.Account.$dirty" class="glyphicon glyphicon-ok form-control-feedback"></span>
+		            </div>
+                    <div class="col-sm-3">
+                        <span ng-show="userForm.Account.$invalid && userForm.Account.$dirty" class="help-block">Account name is mandatory</span>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-class="{
+                    'has-error': userForm.Name.$invalid && userForm.Name.$dirty, 
+                    'has-success': userForm.Name.$valid && userForm.Name.$dirty, 
+                    'has-feedback': userForm.Name.$dirty}">
+                    <label class="col-sm-2 control-label" for="Name">Name</label>
+                    <div class="col-sm-3">
+                        <input type="text" placeholder="Popescu Ion" ng-model="user.Name" name="Name" required class="form-control">
+                        <span ng-show="userForm.Name.$invalid && userForm.Name.$dirty" class="glyphicon glyphicon-remove form-control-feedback"></span>
+                        <span ng-show="userForm.Name.$valid && userForm.Name.$dirty" class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span ng-show="userForm.Name.$invalid && userForm.Name.$dirty" class="help-block">Name is mandatory</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-disabled="userForm.$invalid">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
